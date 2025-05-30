@@ -76,11 +76,130 @@
   </section>
 
 
-  <section  id=ejemplo  class="case-studies">
-    <h2>Espacio para tu ejemplo mojon</h2>
-    
-    <button>EJECUTAR</button>
-  </section>
+<section id="ejemplo" class="case-studies">
+  <h2>Ejemplo interactivo: Algoritmo Memético (Genético + Hill Climbing)</h2>
+
+  <style>
+    #editor {
+      width: 100%;
+      max-width: 800px;
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      font-family: monospace;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    #output {
+      background: #111;
+      color: #0f0;
+      padding: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 8px;
+      font-family: monospace;
+    }
+
+    #ejemplo button {
+      background-color: #6a4c93;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #ejemplo button:hover {
+      background-color: #4a2c6b;
+    }
+
+    .case-studies h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <textarea id="editor" rows="22">
+import random
+
+def fitness(x):
+    return -1 * (x - 7)**2 + 49
+
+def mutar(x):
+    return x + random.uniform(-1, 1)
+
+def hill_climbing(x, max_iter=5):
+    for _ in range(max_iter):
+        vecino = x + random.uniform(-0.5, 0.5)
+        if fitness(vecino) > fitness(x):
+            x = vecino
+    return x
+
+def algoritmo_memetico():
+    poblacion = [random.uniform(-10, 10) for _ in range(10)]
+    for _ in range(30):
+        puntuaciones = [(x, fitness(x)) for x in poblacion]
+        puntuaciones.sort(key=lambda tup: tup[1], reverse=True)
+        padres = [x for x, _ in puntuaciones[:4]]
+        hijos = [mutar(x) for x in padres for _ in range(2)]
+        hijos = [hill_climbing(hijo) for hijo in hijos]
+        poblacion = padres + hijos
+    mejor = max(poblacion, key=fitness)
+    return mejor, fitness(mejor)
+
+resultado = algoritmo_memetico()
+print("Mejor solución:", resultado[0])
+print("Valor óptimo:", resultado[1])
+  </textarea>
+  <br>
+  <button id="run-btn">EJECUTAR</button>
+  <div id="output"></div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/skulpt.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/skulpt-stdlib.js"></script>
+
+  <script>
+    function outf(text) {
+      const output = document.getElementById("output");
+      output.innerHTML += text + "<br>";
+    }
+
+    function runCode() {
+      const prog = document.getElementById("editor").value;
+      document.getElementById("output").innerHTML = "";
+      Sk.configure({ output: outf, read: builtinRead });
+      Sk.misceval.asyncToPromise(() =>
+        Sk.importMainWithBody("<stdin>", false, prog)
+      ).catch(function(err) {
+        outf("Error: " + err.toString());
+      });
+    }
+
+    function builtinRead(x) {
+      if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+        throw "Archivo no encontrado: '" + x + "'";
+      }
+      return Sk.builtinFiles["files"][x];
+    }
+
+    window.addEventListener("load", () => {
+      const btn = document.getElementById("run-btn");
+      if (btn) {
+        btn.addEventListener("click", runCode);
+      }
+    });
+  </script>
+</section>
+
 
   <footer>
     <div class="footer-content">

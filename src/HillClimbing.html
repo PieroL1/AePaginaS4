@@ -5,95 +5,190 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hill Climbing</title>
   <link rel="stylesheet" href="style.css" />
- 
+  <style>
+    /* Estilos personalizados para el bloque de código */
+    #editor {
+      width: 100%;
+      max-width: 800px;
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      font-family: monospace;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    #output {
+      background: #111;
+      color: #0f0;
+      padding: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 8px;
+      font-family: monospace;
+    }
+
+    #ejemplo button {
+      background-color: #e63946;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #ejemplo button:hover {
+      background-color: #d62828;
+    }
+
+    .case-studies h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-          <div class="logo"><img src="Algoritmos_evolutivo.png" alt="Descripción de la imagen" width="150" height="150">
-          </div>
-      
-          <div class="menu-toggle" id="menu-toggle">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-      
-          <nav id="nav">
-            <ul>
-              <li><a href="#concepto">CONCEPTO</a></li>
-              <li><a href="#implementacion">IMPLEMENTACION</a></li>
-              <li><a href="#biblio">BIBLIOTECAS</a></li>
-              <li><a href="#ejemplo">EJEMPLO</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      
+<header>
+  <div class="container">
+    <div class="logo"><img src="Algoritmos_evolutivo.png" alt="Descripción de la imagen" width="150" height="150"></div>
 
-  <section  id="concepto" class="hero" style="background-image: url('HillClimbling.jpeg');">
-    <div class="hero-text">
-      <h1>Hill Climbing</h1>
-      <p>Hill Climbing es un método para encontrar la mejor solución a un problema. Empiezas con una opción y en cada paso eliges la mejor opción cercana que mejora el resultado. Sigues avanzando hasta que no puedes mejorar más y llegas a la "cima".</p>
-    
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  </section>
 
-  <section id="implementacion" class="services">
-    <h2  class="titulodescado" >Implementación en Python</h2>
-    <div class="service-cards">
-      <div class="card">
-        <h3> Funcion solucion inicial</h3>
-        <p>Hill Climbing es un algoritmo de búsqueda local que comienza con una solución inicial en Python, generada aleatoriamente o según un criterio, y utiliza una función para evaluar su calidad.</p>
-      </div>
-      <div class="card">
-        <h3>Generación y evaluación de vecinos</h3>
-        <p>Asi mismo en Python, se crea una función que genera soluciones vecinas modificando la actual, las cuales se evalúan para elegir la mejor según una función objetivo.</p>
-      </div>
-      <div class="card">
-        <h3>Actualización de solución</h3>
-        <p>Si un vecino es mejor que la solución actual, el algoritmo la reemplaza y sigue buscando hasta no hallar mejoras, indicando un máximo local.</p>
-      </div>
-      <div class="card">
-        <h3>Aplicaciones y adaptabilidad</h3>
-        <p>Por lo mencionado Hill Climbing en Python es útil para problemas de optimización donde se busca mejorar soluciones paso a paso adaptandose fácilmente a diferentes contextos</p>
-      </div>
+    <nav id="nav">
+      <ul>
+        <li><a href="#concepto">CONCEPTO</a></li>
+        <li><a href="#implementacion">IMPLEMENTACION</a></li>
+        <li><a href="#biblio">BIBLIOTECAS</a></li>
+        <li><a href="#ejemplo">EJEMPLO</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="concepto" class="hero" style="background-image: url('HillClimbling.jpeg');">
+  <div class="hero-text">
+    <h1>Hill Climbing</h1>
+    <p>Hill Climbing es un método para encontrar la mejor solución a un problema. Empiezas con una opción y en cada paso eliges la mejor opción cercana que mejora el resultado. Sigues avanzando hasta que no puedes mejorar más y llegas a la "cima".</p>
+  </div>
+</section>
+
+<section id="implementacion" class="services">
+  <h2 class="titulodescado">Implementación en Python</h2>
+  <div class="service-cards">
+    <div class="card">
+      <h3>Función solución inicial</h3>
+      <p>Hill Climbing es un algoritmo de búsqueda local que comienza con una solución inicial en Python, generada aleatoriamente o según un criterio, y utiliza una función para evaluar su calidad.</p>
     </div>
-   
-  </section>
-
-
-  <section id="biblio" class="services2">
-    <h2 class="titulodescado2">Bibliotecas Esenciales</h2>
-    <div class="service-cards">
-      <div class="card2">
-        <h3 class="letrita">NumPy</h3>
-        <p class="letrita3">Facilita el manejo eficiente de arreglos y operaciones matemáticas vectorizadas, lo que permite calcular valores de función objetivo y generar vecinos rápidamente, optimizando el rendimiento del algoritmo.</p>
-        <img src="numpi.png"alt="Descripción de la imagen" width="250" height="170">
+    <div class="card">
+      <h3>Generación y evaluación de vecinos</h3>
+      <p>Así mismo en Python, se crea una función que genera soluciones vecinas modificando la actual, las cuales se evalúan para elegir la mejor según una función objetivo.</p>
     </div>
-      <div class="card2">
-        <h3 class="letrita2">Pandas</h3>
-        <p class="letrita4">Ayuda a organizar y manipular datos en estructuras tabulares (DataFrames), facilitando el seguimiento y análisis de soluciones, estados visitados, y resultados parciales durante la ejecución del algoritmo.</p>
-        <img src="pandas.jpg"alt="Descripción de la imagen" width="250" height="150">
-    </div> 
+    <div class="card">
+      <h3>Actualización de solución</h3>
+      <p>Si un vecino es mejor que la solución actual, el algoritmo la reemplaza y sigue buscando hasta no hallar mejoras, indicando un máximo local.</p>
     </div>
-    
-  </section>
-
-  <section  id=ejemplo  class="case-studies">
-    <h2>Espacio para tu ejemplo mojon</h2>
-    
-    <button>EJECUTAR</button>
-  </section>
-
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Algoritmos evolutivos. Gonzales - Liza.</p>
+    <div class="card">
+      <h3>Aplicaciones y adaptabilidad</h3>
+      <p>Hill Climbing en Python es útil para problemas de optimización donde se busca mejorar soluciones paso a paso adaptándose fácilmente a diferentes contextos.</p>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<section id="biblio" class="services2">
+  <h2 class="titulodescado2">Bibliotecas Esenciales</h2>
+  <div class="service-cards">
+    <div class="card2">
+      <h3 class="letrita">NumPy</h3>
+      <p class="letrita3">Facilita el manejo eficiente de arreglos y operaciones matemáticas vectorizadas...</p>
+      <img src="numpi.png" alt="NumPy" width="250" height="170">
+    </div>
+    <div class="card2">
+      <h3 class="letrita2">Pandas</h3>
+      <p class="letrita4">Ayuda a organizar y manipular datos en estructuras tabulares (DataFrames)...</p>
+      <img src="pandas.jpg" alt="Pandas" width="250" height="150">
+    </div>
+  </div>
+</section>
+
+<section id="ejemplo" class="case-studies">
+  <h2>Ejemplo interactivo: Hill Climbing en Python (Simulado)</h2>
+  <textarea id="editor" rows="15">
+def fitness(x):
+    return -1 * (x - 3) ** 2 + 9
+
+def hill_climbing():
+    x = -5
+    step = 0.5
+    for _ in range(20):
+        neighbor = x + step
+        if fitness(neighbor) > fitness(x):
+            x = neighbor
+        else:
+            break
+    return x, fitness(x)
+
+resultado = hill_climbing()
+print("Mejor x:", resultado[0])
+print("Valor óptimo:", resultado[1])
+  </textarea>
+  <br>
+  <button id="run-btn">EJECUTAR</button>
+  <div id="output"></div>
+</section>
+
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2025 Algoritmos evolutivos. Gonzales - Liza.</p>
+  </div>
+</footer>
+<!-- Se carga Skulpt con defer para evitar el error 'Sk is not defined' -->
+<script defer src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/skulpt.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/skulpt-stdlib.js"></script>
+
+<script>
+  function outf(text) {
+    const output = document.getElementById("output");
+    output.innerHTML += text + "<br>";
+  }
+
+  function runCode() {
+    const prog = document.getElementById("editor").value;
+    document.getElementById("output").innerHTML = "";
+    Sk.configure({ output: outf, read: builtinRead });
+    Sk.misceval.asyncToPromise(() =>
+      Sk.importMainWithBody("<stdin>", false, prog)
+    ).catch(function(err) {
+      outf("Error: " + err.toString());
+    });
+  }
+
+  function builtinRead(x) {
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+      throw "Archivo no encontrado: '" + x + "'";
+    }
+    return Sk.builtinFiles["files"][x];
+  }
+
+  // ✅ Enlazar el botón una vez que todo esté listo
+  window.addEventListener("load", () => {
+    const btn = document.getElementById("run-btn");
+    if (btn) {
+      btn.addEventListener("click", runCode);
+    }
+  });
+</script>
+
+
 </body>
 </html>
-
